@@ -1,0 +1,13 @@
+GEM
+  specs:
+    rack (1.2.1)
+    rio (0.4.2)
+    sinatra (1.0)
+      rack (>= 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rio
+  sinatra
