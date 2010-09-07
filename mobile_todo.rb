@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'rio'
+require 'hpricot'
 
 configure :production do
   # configure stuff for production
