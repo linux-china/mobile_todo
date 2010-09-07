@@ -9,6 +9,10 @@ get '/' do
   "Good! you're running a Sinatra application on Heroku!"
 end
 
+get '/proxy/:url' do |url|
+  url
+end
+
 # app specific information. only for test
 get '/env' do
   ENV.inspect
