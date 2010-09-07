@@ -1,5 +1,7 @@
 GEM
+  remote: http://rubygems.org/
   specs:
+    hpricot (0.8.2)
     rack (1.2.1)
     rio (0.4.2)
     sinatra (1.0)
@@ -9,5 +11,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  hpricot
   rio
   sinatra
