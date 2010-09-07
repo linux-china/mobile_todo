@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'rio'
+
 configure :production do
   # configure stuff for production
 end
@@ -10,7 +11,9 @@ get '/' do
 end
 
 get '/proxy/*' do
-  rio(params[:splat][0]).contents
+  url = "#{params[:splat][0]}"
+  url = "http://#{url}" if (!url.start_with?("http"))
+  rio(url).contents
 end
 
 # app specific information. only for test
