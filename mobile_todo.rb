@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'rio'
-require 'hpricot'
+require 'httpclient'
 
 configure :production do
   # configure stuff for production
@@ -12,9 +11,13 @@ get '/' do
 end
 
 get '/proxy/*' do
+
   url = "#{params[:splat][0]}"
   url = "http://#{url}" if (!url.start_with?("http"))
-  rio(url).contents
+   clnt = HTTPClient.new
+  response = clnt.get(url)
+  ccontent_type response.contenttype
+  response.content
 end
 
 # app specific information. only for test
