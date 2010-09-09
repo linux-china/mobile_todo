@@ -9,7 +9,7 @@ configure :production do
 end
 
 # filter html
-def filter_html(base_url, page_content)
+def filter_html(base_uri, page_content)
   begin
     doc = Hpricot(page_content)
     (doc/'//a').each do |link|
