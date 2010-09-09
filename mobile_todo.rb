@@ -14,7 +14,7 @@ def filter_html(base_uri, page_content)
     doc = Hpricot(page_content)
     (doc/'//a').each do |link|
       href = "#{link.attributes['href']}"
-      href = "#{base_uri}#{href}" if href.start_with?("/")
+      href = "#{base_uri}#{href}" if !href.start_with?("http")
       link.attributes['href'] = "/proxy/#{href}" if (href.start_with?("http"))
     end
     (doc/'//img').each do |img|
