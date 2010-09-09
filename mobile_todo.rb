@@ -10,18 +10,22 @@ end
 
 # filter html
 def filter_html(base_url, page_content)
-  doc = Hpricot(page_content)
-  (doc/'//a').each do |link|
-    href = "#{link.attributes['href']}"
-    href = "#{base_uri}#{href}" if href.start_with?("/")
-    link.attributes['href'] = "/proxy/#{href}" if (href.start_with?("http"))
+  begin
+    doc = Hpricot(page_content)
+    (doc/'//a').each do |link|
+      href = "#{link.attributes['href']}"
+      href = "#{base_uri}#{href}" if href.start_with?("/")
+      link.attributes['href'] = "/proxy/#{href}" if (href.start_with?("http"))
+    end
+    (doc/'//img').each do |img|
+      src = "#{img.attributes['src']}"
+      src = "#{base_uri}#{src}" if src.start_with?("/")
+      img.attributes['src'] = "/proxy/#{src}" if src.start_with?("http")
+    end
+    return doc.to_s
+  rescue => e
+    return e.to_s
   end
-  (doc/'//img').each do |img|
-    src = "#{img.attributes['src']}"
-    src = "#{base_uri}#{src}" if src.start_with?("/")
-    img.attributes['src'] = "/proxy/#{src}" if src.start_with?("http")
-  end
-  doc.to_s
 end
 
 get '/' do
