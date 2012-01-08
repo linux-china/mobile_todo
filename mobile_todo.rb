@@ -46,7 +46,7 @@ get '/proxy/*' do
     page_content = f.read
   end
   content_type content_type, :charset => charset
-  if (content_type.include?('html') || content_type.include?('text'))
+  if content_type.include?('html') || content_type.include?('text')
     page_content = filter_html(base_uri, page_content)
   end
   page_content
