@@ -29,7 +29,7 @@ def filter_html(base_uri, page_content)
 end
 
 get '/' do
-  "Good! you're running a Sinatra application on Heroku!"
+  "Welcome!!!"
 end
 
 get '/proxy/*' do
